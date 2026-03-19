@@ -10,7 +10,8 @@ class DatabaseConnection extends DatabaseConfig {
             this.DB_PASSWORD,
             {
                 host: this.DB_HOST,
-                dialect: "mysql"
+                dialect: "mysql",
+                logging: false
             }
         )
     }

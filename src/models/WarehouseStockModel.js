@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
 import DatabaseConnectionService from "../services/DatabaseConnectionService.js";
+import { WarehouseStockModelDetail } from "../../config.js";
 
 const WAREHOUSE_STRUCTURE = {
     entry_id: {
@@ -74,19 +75,21 @@ const WAREHOUSE_STRUCTURE = {
 }
 class WarehouseStockModel {
     constructor() {
-        this.sequelize = DatabaseConnectionService.sequelize
+        this.connection = DatabaseConnectionService
+        this.sequelize = this.connection.sequelize
         this.table = this.sequelize.define(
-            "WarehouseStock",
+            WarehouseStockModelDetail.tableName,
             { ...WAREHOUSE_STRUCTURE },
-            { tableName: "WarehouseStock", timestamps: false }
+            { tableName: WarehouseStockModelDetail.tableName, timestamps: false }
         )
     }
     restartModel() {
-        this.sequelize = DatabaseConnectionService.sequelize
+        this.connection.restartConnection()
+        this.sequelize = this.connection.sequelize
         this.table = this.sequelize.define(
-            "WarehouseStock",
+            WarehouseStockModelDetail.tableName,
             { ...WAREHOUSE_STRUCTURE },
-            { tableName: "WarehouseStock", timestamps: false }
+            {tableName:WarehouseStockModelDetail.tableName,timestamps:false}
         )
     }
     modelTemplate({
