@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import DatabaseConfig from "../config/databaseConfig.js";
+import DatabaseConfig from "../config/DatabaseConfig.js";
 
 class DatabaseConnection extends DatabaseConfig {
     constructor() {
