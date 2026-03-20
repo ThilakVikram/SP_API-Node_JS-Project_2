@@ -93,7 +93,6 @@ class WarehouseStockModel {
         )
     }
     modelTemplate({
-        entry_id,
         updated_date,
         asin,
         sku,
@@ -110,7 +109,6 @@ class WarehouseStockModel {
         unstructured_name
     }) {
         return {
-            entry_id,
             updated_date,
             asin,
             sku,
@@ -142,6 +140,12 @@ class WarehouseStockModel {
         catch (err) {
             throw err
         }
+    }
+    getData(){
+        return this.table.findOne
+    }
+    getManyData(){
+        return this.table.findAll
     }
 }
 
